@@ -17,6 +17,12 @@ sudo apt-get update
 sudo apt-get install golang-1.10-go
 ```
 
+## Rust
+
+```
+sudo apt-get install rustc cargo dh-cargo
+```
+
 ## Docker 
 
 ```
