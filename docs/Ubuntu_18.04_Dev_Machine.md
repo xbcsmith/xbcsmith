@@ -38,7 +38,16 @@ sudo apt-get install docker-ce
 ### Expose port to world... seems safe
 
 ```
-sudo sed -i 's~-H fd://~-H fd:// -H tcp://0.0.0.0:2375~g' /lib/systemd/system/docker.service
+mkdir /etc/docker
+cat > /etc/docker/daemon.json << EOF
+{
+"debug": true,
+"hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]
+}
+
+EOF
+
+sed -i 's~dockerd -H fd://~dockerd~g' /lib/systemd/system/docker.service
 sudo sed -i 's~StartLimitInterval=60s~StartLimitInterval=60s\nIPForward=yes\n~g' /lib/systemd/system/docker.service
 ```
 
@@ -52,7 +61,7 @@ sudo systemctl start docker
 ```
 
 ```
-docker run --rm -it aarch64/hello-world
+docker run --rm -it hello-world
 ```
 
 ## Devel Pkgs
@@ -65,12 +74,12 @@ sudo apt-get -y install python-autopep8 python3-flake8 flake8 python-flake8 isor
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
-sudo apt-get install python3.5 python3.4
+sudo apt-get install python3.6 python3.6-venv python3.7 python3.7-venv
 ```
 
 
 ## Virtual Env
-
+ 
 
 ```
 mkvirtualenv foo
