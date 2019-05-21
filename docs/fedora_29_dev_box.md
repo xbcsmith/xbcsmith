@@ -8,6 +8,10 @@
         redhat-rpm-config \
         rpmdevtools \
         fakeroot \
+        gcc \
+        gcc-c++ \
+        clang \
+        make \
         cmake \
         vim-enhanced \
         bzip2-devel \
@@ -23,6 +27,7 @@
         zlib-devel \
         qemu \
         unzip \
+        zip \
         p7zip
 
 ## Install golang
