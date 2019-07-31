@@ -1,5 +1,7 @@
 # Env Vars in go
 
+## Env Module
+
 https://github.com/caarlos0/env
 
 ```
@@ -49,3 +51,29 @@ func main() {
     }
 }
 ```
+
+## Native
+
+```
+package main
+
+import (
+    "os"
+    "fmt"
+)
+
+// GetEnv returns an env variable value or a default
+func GetEnv(key, fallback string) string {
+    if value, ok := os.LookupEnv(key); ok {
+        return value
+    }
+    return fallback
+}
+
+func main() {
+    foo := GetEnv("FOO_FOO", "foo_not_set")
+    fmt.Printf("foo : %s\n", foo)
+}
+```
+
+
