@@ -1,0 +1,15 @@
+[user]
+    name = Brett Smith
+    email = bc.smith@sas.com
+[push]
+    default = simple
+[alias]
+    st = status
+    last = log -1 HEAD
+    br = branch
+    co = checkout
+    ci = commit
+[core]
+    excludesfile = ~/.gitignore
+
+
