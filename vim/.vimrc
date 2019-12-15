@@ -12,8 +12,6 @@ set bg=dark
 filetype on            " enables filetype detection
 filetype plugin on     " enables filetype specific plugins
 
-
-
 :nnoremap <F5> "=strftime("%c")<CR>P
 :inoremap <F5> <C-R>=strftime("%c")<CR>
 
@@ -30,7 +28,6 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-"colorscheme delek
 "colorscheme molokai
 "let g:molokai_original = 1
 "let g:rehash256 = 1
@@ -42,8 +39,8 @@ highlight SpellLocal term=underline cterm=underline
 "colorscheme solarized
 "let g:solarized_termtrans=1
 "let g:solarized_termcolors=256
-"let g:solarized_contrast="high"
-"let g:solarized_visibility="high"
+"let g:solarized_contrast="low"
+"let g:solarized_visibility="low"
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%80v.\+/
@@ -62,7 +59,8 @@ let g:syntastic_check_on_wq = 0
 "set statusline+=\ %=%#warningmsg#
 "set statusline+=\ %=%{SyntasticStatuslineFlag()}
 "set statusline+=\ %=%*
-
+"
+au BufRead,BufNewFile *.go set filetype=go
 set autowrite
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -88,4 +86,7 @@ set backspace=indent,eol,start
 
 syntax on
 
-execute pathogen#infect()
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL

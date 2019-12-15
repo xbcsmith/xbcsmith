@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/bsmith/git/gitlab.sas.com/grist/grist-ops/kube/terraform/roles/node-storage/defaults'
+let g:netrw_dirhist_2='/home/bsmith/git/github.com/uber/makisu/assets'
+let g:netrw_dirhist_3='/Users/bsmith/go/src/gitlab.sas.com/polaris/janus'
+let g:netrw_dirhist_4='/Users/bsmith/go/src/gitlab.sas.com/polaris/janus/docs'
+let g:netrw_dirhist_5='/Users/bsmith/go/src/gitlab.sas.com/polaris/janus/docs/examples'
+let g:netrw_dirhist_6='/Users/bsmith/go/src/gitlab.sas.com/polaris/python-janus/janus'
+let g:netrw_dirhist_7='/Users/bsmith/go/src/gitlab.sas.com/polaris/demo/guardian/scripts'
+let g:netrw_dirhist_8='/Users/bsmith/go/src/foo/scripts'
+let g:netrw_dirhist_9='/Users/bsmith/go/src/gerrit-polaris.unx.sas.com/polaris/janus/config'
