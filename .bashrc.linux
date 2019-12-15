@@ -1,0 +1,115 @@
+# .bashrc
+# User specific aliases and functions
+set -b
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+BLACK='1;30m'
+RED='1;31m'
+GREEN='1;32m'
+YELLOW='1;33m'
+BLUE='1;34m'
+MAGENTA='1;35m'
+CYAN='1;36m'
+WHITE='1;37m'
+
+
+NCOLOR=$GREEN
+HCOLOR=$YELLOW
+ACOLOR=$GREEN
+PCOLOR=$WHITE
+
+if [ -f /etc/os-release ];then 
+    DIST=$(head -n1 /etc/os-release | cut -d"=" -f2 | tr -d '"' | cut -d" " -f1)
+else
+    DIST=$(head -n1 /etc/issue | cut -d" " -f1)
+fi
+
+case ${DIST} in
+    Fedora )    NCOLOR=$CYAN
+                HCOLOR=$WHITE
+                ACOLOR=$WHITE
+                PCOLOR=$WHITE
+                ;;
+    CentOS )    NCOLOR=$GREEN
+                HCOLOR=$BLUE
+                ACOLOR=$BLUE
+                PCOLOR=$WHITE
+                ;;
+    Red )       NCOLOR=$GREEN
+                HCOLOR=$CYAN
+                ACOLOR=$CYAN
+                PCOLOR=$WHITE
+                ;;
+    SLES )      NCOLOR=$WHITE
+                HCOLOR=$YELLOW
+                ACOLOR=$YELLOW
+                PCOLOR=$WHITE
+                ;;
+    Ubuntu )    NCOLOR=$CYAN
+                HCOLOR=$MAGENTA
+                ACOLOR=$WHITE
+                PCOLOR=$WHITE
+                ;;
+    * )         NCOLOR=$WHITE
+                HCOLOR=$CYAN
+                ACOLOR=$WHITE
+                PCOLOR=$WHITE
+                ;;
+esac
+
+if [ $UID -eq 0 ];
+    then
+        NCOLOR=$RED
+        HCOLOR=$RED
+        ACOLOR=$RED
+        PCOLOR=$RED
+fi
+
+
+PS1="\[\033[1;37m\][\[\033[1;37m\]\[\033[${NCOLOR}\]\u\[\033[1;37m\]@\[\033[1;37m\]\[\033[${HCOLOR}\]\h\[\033[1;35m\]\[\033[1;37m\]:\[\033[1;37m\]\[\033[${PCOLOR}\]\w\[\033[${PCOLOR}\]\[\033[1;37m\]]---\[\033[1;37m\]\n\[\033[1;37m\]-(\[\033[00m\]\W\[\033[1;37m\])-\[\033[1;37m\]\[\033[${ACOLOR}\]>>>\[\033[00m\]"
+
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+
+#setup terminal tab title
+function title {
+    if [ "$1" ]
+    then
+        unset PROMPT_COMMAND
+        echo -ne "\033]0;${*}\007"
+    else
+        export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+    fi
+}
+
+
+# User specific aliases and functions
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias vi='vim'
+alias whence='which '
+alias more='/usr/bin/less '
+
+export GPG_TTY=$(tty)
+
+# PYTHON Vars
+export PYTHONSTARTUP=~/.pythonrc
+
+source ~/.git-completion.bash
+source ~/.screen-completion.bash
+
+# GRADLE
+export GRADLE_USER_HOME=~/.gradle
+
+# JAVA
+export JAVA_BIN=$(readlink -f $(which java))
+export JAVA_HOME=${JAVA_BIN%%/bin/java}
+
+# GO VARIABLES
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
