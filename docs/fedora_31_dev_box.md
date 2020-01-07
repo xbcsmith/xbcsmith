@@ -30,9 +30,16 @@
         zip \
         p7zip
 
+
+
 ## Install golang
 
     sudo dnf install -y snapd
+
+    sudo ln -s /var/lib/snapd/snap /snap
+
+    sudo snap install --classic --channel=1.13/stable go
+
 
 ## Install Rust
 
@@ -104,18 +111,24 @@ or
 
     mkdir /etc/docker
 
+USE AT OWN RISK Very Insecure
+ 
     cat > /etc/docker/daemon.json << EOF
     {
     "debug": true,
     "hosts": ["tcp://0.0.0.0:2375", "unix:///var/run/docker.sock"]
     }
 
-
     EOF
 
     sed -i 's~dockerd -H fd://~dockerd~g' /lib/systemd/system/docker.service
 
+    systemctl daemon-reload
+
+End silliness
+
     systemctl enable docker.service
+
     systemctl start docker.service
 
     docker run hello-world
@@ -141,7 +154,7 @@ export JAVA_BIN=$(readlink -f $(which java))
 export JAVA_HOME=${JAVA_BIN%%/bin/java}
 
 # GO VARIABLES
-export GOPATH=/home/bsmith/go
+export GOPATH=/home/$USER/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
@@ -160,5 +173,14 @@ export PATH=$PATH:$GOBIN
 
     EOF
 
+## Remove Packagekit
+
+    sudo systemctl status packagekit
+
+    sudo systemctl stop packagekit
+    
+    sudo systemctl mask packagekit
+
+    sudo dnf remove PackageKit*
 
 
