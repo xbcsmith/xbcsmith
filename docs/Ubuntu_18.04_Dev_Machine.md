@@ -12,9 +12,9 @@ sudo update-alternatives --config editor
 ## GO
 
 ```
-sudo add-apt-repository ppa:gophers/archive
+sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt-get update
-sudo apt-get install golang-1.10-go
+sudo apt-get install golang-go
 ```
 
 ## Rust
