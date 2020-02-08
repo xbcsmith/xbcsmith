@@ -34,11 +34,25 @@
 
 ## Install golang
 
-    sudo dnf install -y snapd
+    curl -O https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
+    sudo tar -C /usr/local/bin -xzf go1.13.7.linux-amd64.tar.gz
+    export PATH=/usr/local/bin/go/bin:$PATH
+    go version
 
-    sudo ln -s /var/lib/snapd/snap /snap
 
-    sudo snap install --classic --channel=1.13/stable go
+    mkdir -p ~/go/{src,bin}
+
+    cat >> ~/.bashrc << EOF
+    # GO VARIABLES
+    export GOPATH=\$HOME/go
+    export PATH=\$PATH:\$GOPATH/bin
+    export PATH=\$PATH:/usr/local/bin/go/bin
+
+    EOF
+
+    go get -u golang.org/x/tools/...
+    go get -u golang.org/x/lint/golint
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.23.2
 
 
 ## Install Rust
@@ -47,7 +61,7 @@
 
     source $HOME/.cargo/env
 
-##  Install Python Things
+## Install Python Things
 
     sudo dnf install -y PyYAML \
         python-devel \
@@ -112,7 +126,7 @@ or
     mkdir /etc/docker
 
 USE AT OWN RISK Very Insecure
- 
+
     cat > /etc/docker/daemon.json << EOF
     {
     "debug": true,
@@ -135,7 +149,7 @@ End silliness
 
 ## Install Java
 
-    sudo dnf install -y java 
+    sudo dnf install -y java
 
 ## Add to the bottom of your .bashrc
 
@@ -157,6 +171,7 @@ export JAVA_HOME=${JAVA_BIN%%/bin/java}
 export GOPATH=/home/$USER/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+export PATH=$PATH:/usr/local/bin/go/bin
 ```
 
 ## Add a .pythonrc
@@ -173,14 +188,48 @@ export PATH=$PATH:$GOBIN
 
     EOF
 
+## Python Virtual env
+
+    mkdir -p ~/.virtualenvs
+    /usr/local/bin/python3.7 -m venv ~/.virtualenvs/foobar
+    source ~/.virtualenvs/foobar/bin/activate
+
+    pip install --upgrade pip setuptools pbr six setuptools wheel pkg_resources functools32
+    pip install --upgrade rfc3987 enum34 PyYAML stevedore jsonschema Jinja2  docker
+    pip install --upgrade autopep8 flake8 tox black isort pdbpp
+
+## Python formater script
+
+    cat > ~/bin/format_python << EOF
+    #!/bin/bash
+    isort --atomic --apply --recursive "${@}"
+    black --line-length=120 "${@}"
+    flake8 --max-line-length=120 "${@}"
+
+    EOF
+
+    chmod +x ~/bin/format_python
+
+
+
 ## Remove Packagekit
 
     sudo systemctl status packagekit
 
     sudo systemctl stop packagekit
-    
+
     sudo systemctl mask packagekit
 
     sudo dnf remove PackageKit*
 
+## NPM
 
+
+    sudo dnf install -y gcc-c++ make
+    curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -
+    curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+    sudo dnf install nodejs yarn
+
+## Linter
+
+    npm install --save remark-cli remark-preset-lint-recommended
