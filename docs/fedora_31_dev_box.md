@@ -84,7 +84,9 @@ sudo dnf install -y PyYAML \
     python3-virtualenv \
     python3-pytest \
     python3-tox \
-    python3-mock
+    python3-isort \
+    python3-mock \
+    black
 ```
 
 ## Install Docker

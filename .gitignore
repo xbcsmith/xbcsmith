@@ -22,8 +22,6 @@ vendor/
 *.manifest
 *.syso
 
-/bin
-/tools
 /tests/coverage.*
 /docker-compose.override.yml
 /versioninfo.json
