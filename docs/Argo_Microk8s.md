@@ -1,6 +1,6 @@
 # Argo MicroK8s
 
-```
+```bash
 sudo usermod -aG wheel,docker bsmith
 
 sudo iptables -P FORWARD ACCEPT
@@ -20,7 +20,7 @@ sudo snap install microk8s --classic
 
 ## Config
 
-```
+```bash
 microk8s.kubectl config view --raw > $HOME/.kube/config
 
 sudo snap alias microk8s.kubectl kubectl
@@ -44,7 +44,7 @@ microk8s.enable prometheus
 
 ## ArgoCD
 
-```
+```bash
 curl -sSL -o ~/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v1.0.0/argocd-linux-amd64
 
 chmod +x ~/bin/argocd
@@ -57,7 +57,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 ```
 
-```
+```bash
 argocd login 192.168.1.203:30209
 
 argocd app create guestbook   --repo https://github.com/argoproj/argocd-example-apps.git   --path guestbook   --dest-server https://kubernetes.default.svc   --dest-namespace default
@@ -65,7 +65,7 @@ argocd app create guestbook   --repo https://github.com/argoproj/argocd-example-
 
 ## Argo Workflow
 
-```
+```bash
 curl -sSL -o ~/bin/argo https://github.com/argoproj/argo/releases/download/v2.2.1/argo-linux-amd64
 
 chmod +x ~/bin/argo
