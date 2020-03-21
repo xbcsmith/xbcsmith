@@ -2,9 +2,9 @@
 
 ## Env Module
 
-https://github.com/caarlos0/env
+<https://github.com/caarlos0/env>
 
-```
+```bash
 export MINIO_URL="0.0.0.0:9000"
 export MINIO_ACCESS_KEY="ACCESS"
 export MINIO_SECRET_KEY="0123456789"
@@ -12,9 +12,9 @@ export MINIO_SECURE="false"
 export MINIO_BUCKET=$(uuidgen)
 ```
 
-main.go
+filename: `main.go`
 
-```
+```go
 package main
 
 import (
@@ -54,7 +54,7 @@ func main() {
 
 ## Native
 
-```
+```go
 package main
 
 import (
@@ -75,5 +75,3 @@ func main() {
     fmt.Printf("foo : %s\n", foo)
 }
 ```
-
-

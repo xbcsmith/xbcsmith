@@ -26,11 +26,12 @@ List partition table
 ```bash
 fdisk -l /dev/nvme0n1
 ```
+
 Example
 
-```
+```bash
 Disk /dev/nvme0n1: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
-Disk model: CT1000P1SSD8                            
+Disk model: CT1000P1SSD8
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -50,22 +51,22 @@ fdisk /dev/nvme0n1
 
 Delete the partition
 
-```
+```bash
 Command (m for help): d
-Partition number (1,2, default 2): 2 
+Partition number (1,2, default 2): 2
 
 Partition 2 has been deleted.
 ```
 
 Create a new partition
 
-```
-Command (m for help): n 
+```bash
+Command (m for help): n
 
-Partition type: 
-  p  primary (1 primary, 0 extended, 3 free) 
-  e  extended 
-Select (default p): *Enter* 
+Partition type:
+  p  primary (1 primary, 0 extended, 3 free)
+  e  extended
+Select (default p): *Enter*
 ```
 
 List the new partition
@@ -74,11 +75,11 @@ List the new partition
 fdisk -l /dev/nvme0n1
 ```
 
-Results 
+Results
 
-```
+```bash
 Disk /dev/nvme0n1: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
-Disk model: CT1000P1SSD8                            
+Disk model: CT1000P1SSD8
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
@@ -89,7 +90,6 @@ Device         Boot   Start        End    Sectors   Size Id Type
 /dev/nvme0n1p1 *       2048    2099199    2097152     1G 83 Linux
 /dev/nvme0n1p2      2099200 1953523711 1951424512 930.5G 8e Linux LVM
 ```
-
 
 ## Add New Partition
 
@@ -102,20 +102,20 @@ Display the PV
 ```bash
 pvdisplay
 ```
+
 Results
 
-```
+```bash
   --- Physical volume ---
   PV Name               /dev/nvme0n1p2
   VG Name               fedora
   PV Size               <446.13 GiB / not usable 1.00 MiB
-  Allocatable           yes 
+  Allocatable           yes
   PE Size               4.00 MiB
   Total PE              114209
   Free PE               48728
   Allocated PE          65481
   PV UUID               8QkAPp-eO5T-azay-7BEI-cnso-zt2q-SELaln
-
 ```
 
 Resize the PV
@@ -126,7 +126,7 @@ pvresize /dev/nvme0n1p2
 
 Results
 
-```
+```bash
   Physical volume "/dev/nvme0n1p2" changed
   1 physical volume(s) resized or updated / 0 physical volume(s) not resized
 ```
@@ -139,12 +139,12 @@ pvdisplay
 
 Results
 
-```
+```bash
   --- Physical volume ---
   PV Name               /dev/nvme0n1p2
   VG Name               fedora
   PV Size               930.51 GiB / not usable 3.00 MiB
-  Allocatable           yes 
+  Allocatable           yes
   PE Size               4.00 MiB
   Total PE              238210
   Free PE               172729
@@ -158,7 +158,7 @@ Results
 lvdisplay /dev/fedora/home
 ```
 
-```
+```bash
   --- Logical volume ---
   LV Path                /dev/fedora/home
   LV Name                home
@@ -181,7 +181,7 @@ lvdisplay /dev/fedora/home
 lvextend -L+100G /dev/fedora/home
 ```
 
-```
+```bash
   Size of logical volume fedora/home changed from 103.04 GiB (26379 extents) to 203.04 GiB (51979 extents).
   Logical volume fedora/home successfully resized.
 ```
@@ -190,7 +190,7 @@ lvextend -L+100G /dev/fedora/home
  lvdisplay /dev/fedora/home
 ```
 
-```
+```bash
   --- Logical volume ---
   LV Path                /dev/fedora/home
   LV Name                home
@@ -212,10 +212,10 @@ lvextend -L+100G /dev/fedora/home
 ## Resize the Filesystem
 
 ```bash
-resize2fs /dev/fedora/home 
+resize2fs /dev/fedora/home
 ```
 
-```
+```bash
 resize2fs 1.44.6 (5-Mar-2019)
 Filesystem at /dev/fedora/home is mounted on /home; on-line resizing required
 old_desc_blocks = 13, new_desc_blocks = 26
@@ -223,10 +223,10 @@ The filesystem on /dev/fedora/home is now 53226496 (4k) blocks long.
 ```
 
 ```bash
-df -h /dev/fedora/home 
+df -h /dev/fedora/home
 ```
 
-```
+```bash
 Filesystem               Size  Used Avail Use% Mounted on
 /dev/mapper/fedora-home  200G   27G  165G  14% /home
 ```
