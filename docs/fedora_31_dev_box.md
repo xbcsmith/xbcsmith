@@ -35,25 +35,31 @@ sudo dnf install -y \
 ## Install golang
 
 ```bash
-curl -O https://dl.google.com/go/go1.13.7.linux-amd64.tar.gz
-sudo tar -C /usr/local/bin -xzf go1.13.7.linux-amd64.tar.gz
-export PATH=/usr/local/bin/go/bin:$PATH
+sudo rm -rfv /usr/local/go
+curl -O https://dl.google.com/go/go1.14.1.linux-amd64.tar.gz
+sudo tar -C /usr/local/ -xzf go1.14.1.linux-amd64.tar.gz
+export PATH=/usr/local/go/bin:$PATH
 go version
-
+rm go1.14.1.linux-amd64.tar.gz
 
 mkdir -p ~/go/{src,bin}
 
 cat >> ~/.bashrc << EOF
 # GO VARIABLES
 export GOPATH=\$HOME/go
-export PATH=\$PATH:\$GOPATH/bin
-export PATH=\$PATH:/usr/local/bin/go/bin
+export PATH=\$PATH:/usr/local/go/bin:\$GOPATH/bin
+export GOPROXY=http://goproxy.sas.com:3000
+export GONOSUMDB=*.sas.com
 
 EOF
 
 go get -u golang.org/x/tools/...
 go get -u golang.org/x/lint/golint
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.23.2
+go get -v github.com/go-lintpack/lintpack/...
+go get -v github.com/go-critic/go-critic/...
+cd $(go env GOPATH)/src/github.com/go-critic/go-critic && make gocritic && mv -v gocritic $GOPATH/bin/
+cd
 ```
 
 ## Install Rust
@@ -178,10 +184,11 @@ curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.r
 sudo dnf install nodejs yarn
 ```
 
-## Markdown Linter
+## Linter
 
 ```bash
 npm install --save remark-cli remark-preset-lint-recommended markdownlint-cli
+npm install --save @commitlint/cli @commitlint/config-conventional
 ```
 
 ## bashrc
