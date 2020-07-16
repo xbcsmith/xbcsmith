@@ -59,6 +59,24 @@ brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent \
   gnu-getopt grep gnutls
 ```
 
+```bash
+PATHS=$(brew info coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent | grep PATH=)
+for path in $PATHS;do
+    echo "export $path";
+done
+```
+
+Add output to bashrc
+
+```bash
+# GNU Paths
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+```
+
 ## Cloud
 
 ```bash
@@ -96,8 +114,9 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 mkvirtualenv --python $(which python3) foo
 
 pip install --upgrade pip setuptools pbr wheel
-pip install --upgrade rfc3987 enum34 PyYAML stevedore jsonschema Jinja2 docker
+pip install --upgrade rfc3987 enum34 PyYAML stevedore jsonschema Jinja2
 pip install --upgrade autopep8 flake8 tox pdbpp isort black mock tox
+pip install --upgrade docker reuse
 ```
 
 ## Go and Rust
@@ -126,12 +145,19 @@ brew install node
 npm install -g markdownlint-cli
 ```
 
+add to bashrc
+
+```bash
+# Node PATH
+export PATH="$PATH:/Users/bsmith/node_modules/.bin"
+```
+
 ## Misc
 
 ```bash
 brew cask install macdown vscodium
 
-brew install go@1.13 tree xz yamllint wget
+brew install tree xz yamllint wget
 
 brew install pwgen pyenv pyenv-virtualenv pyenv-virtualenvwrapper \
     kafkacat jq gnutls
