@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+golangci-lint run --no-config  --disable-all --fix \
+    --enable deadcode \
+    --enable errcheck \
+    --enable gosimple \
+    --enable govet \
+    --enable ineffassign \
+    --enable staticcheck \
+    --enable structcheck \
+    --enable typecheck \
+    --enable unused \
+    --enable varcheck \
+    --enable asciicheck \
+    --enable bodyclose \
+    --enable depguard \
+    --enable dogsled \
+    --enable dupl \
+    --enable gocognit \
+    --enable goconst \
+    --enable gocritic \
+    --enable gocyclo \
+    --enable godot \
+    --enable godox \
+    --enable goerr113 \
+    --enable gofmt \
+    --enable goimports \
+    --enable golint \
+    --enable gomnd \
+    --enable gomodguard \
+    --enable goprintffuncname \
+    --enable gosec \
+    --enable interfacer \
+    --enable maligned \
+    --enable misspell \
+    --enable nakedret \
+    --enable nestif \
+    --enable nolintlint \
+    --enable prealloc \
+    --enable rowserrcheck \
+    --enable scopelint \
+    --enable stylecheck \
+    --enable testpackage \
+    --enable unconvert \
+    --enable unparam \
+    --enable whitespace \
+    "$@"
+
+#    --enable funlen \
+#    --enable gochecknoglobals \
+#    --enable gochecknoinits \
+#    --enable lll \
+#    --enable wsl \
