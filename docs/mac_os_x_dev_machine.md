@@ -99,6 +99,22 @@ brew install vim
 
 <https://github.com/macvim-dev/macvim/releases>
 
+## Git Aliases
+
+```bash
+git config --global alias.st status
+git config --global alias.last "log -1 HEAD"
+git config --global alias.br "branch -r"
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.unstage "reset HEAD --"
+git config --global alias.b branch
+git config --global alias.t "tag --list -n"
+git config --global alias.cb "checkout -b"
+git config --global alias.can "commit --amend --no-edit"
+git config --global alias.lt "describe --tags"
+```
+
 ## Python
 
 probably already installed by **vim**
