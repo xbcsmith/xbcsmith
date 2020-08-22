@@ -113,6 +113,7 @@ git config --global alias.t "tag --list -n"
 git config --global alias.cb "checkout -b"
 git config --global alias.can "commit --amend --no-edit"
 git config --global alias.lt "describe --tags"
+git config --global alias.pl "pull --rebase"
 ```
 
 ## Python
