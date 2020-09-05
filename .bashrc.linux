@@ -22,7 +22,7 @@ HCOLOR=$YELLOW
 ACOLOR=$GREEN
 PCOLOR=$WHITE
 
-if [ -f /etc/os-release ];then 
+if [ -f /etc/os-release ];then
     DIST=$(head -n1 /etc/os-release | cut -d"=" -f2 | tr -d '"' | cut -d" " -f1)
 else
     DIST=$(head -n1 /etc/issue | cut -d" " -f1)

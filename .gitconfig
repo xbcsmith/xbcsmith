@@ -11,5 +11,3 @@
     ci = commit
 [core]
     excludesfile = ~/.gitignore
-
-

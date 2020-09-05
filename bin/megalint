@@ -30,7 +30,6 @@ golangci-lint run --no-config  --disable-all --fix \
     --enable gomodguard \
     --enable goprintffuncname \
     --enable gosec \
-    --enable interfacer \
     --enable maligned \
     --enable misspell \
     --enable nakedret \
@@ -38,7 +37,6 @@ golangci-lint run --no-config  --disable-all --fix \
     --enable nolintlint \
     --enable prealloc \
     --enable rowserrcheck \
-    --enable scopelint \
     --enable stylecheck \
     --enable testpackage \
     --enable unconvert \

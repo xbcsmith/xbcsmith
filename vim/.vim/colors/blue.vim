@@ -14,7 +14,7 @@ endif
 let g:colors_name = "blue"
 hi Normal		guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=darkBlue
 hi NonText		guifg=magenta	ctermfg=lightMagenta
-hi comment		guifg=gray		ctermfg=gray	ctermbg=darkBlue	gui=bold 
+hi comment		guifg=gray		ctermfg=gray	ctermbg=darkBlue	gui=bold
 hi constant		guifg=cyan		ctermfg=cyan
 hi identifier	guifg=gray		ctermfg=red
 hi statement	guifg=white		ctermfg=white	ctermbg=darkBlue	gui=none
@@ -52,4 +52,3 @@ hi DiffDelete   guibg=coral			guifg=black	ctermbg=cyan		ctermfg=black
 hi Folded		guibg=orange		guifg=black		ctermbg=yellow		ctermfg=black
 hi FoldColumn	guibg=gray30		guifg=black	ctermbg=gray		ctermfg=black
 hi cIf0			guifg=gray			ctermfg=gray
-

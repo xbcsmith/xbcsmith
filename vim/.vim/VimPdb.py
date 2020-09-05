@@ -80,7 +80,7 @@ class PdbIDE(bdb.Bdb):
 		# The return value of the last method.
 		self.last_method_return_value = None
 
-		
+
 
 
 	def start_debugging(self, filename, stop_immediately = True, args = []):
@@ -354,7 +354,7 @@ class PdbIDE(bdb.Bdb):
 		final_stack_trace = self.stack_entries_joiner.join(output_stack_traces)
 
 		self.print_message('Stack Trace:\n' + final_stack_trace)
-	
+
 
 	def goto_current_line(self, frame, display = True):
 		"""Moves the cursor to the currently debugged line, in the appropriate file. If display == False, don't highlight or move the cursor."""
@@ -383,7 +383,7 @@ class PdbIDE(bdb.Bdb):
 	def add_queued_method(self, function_name, *parameters):
 		"""Adds a method to the methods to run queue. It will be called indirectly by run_queued_methods"""
 		self.methods_to_run.append([function_name, parameters])
-	
+
 
 	def run_queued_methods(self):
 		"""Executes any methods queued for execution. Used so that the methods will be executed from this instance's
@@ -436,7 +436,7 @@ class PdbIDE(bdb.Bdb):
 			return True
 		else:
 			return False
-	
+
 
 	def highlight_breakpoints_for_file(self, filename):
 		"""Highlights breakpoints for a given filename."""
@@ -466,7 +466,7 @@ class PdbIDE(bdb.Bdb):
 					new_breakpoint = {}
 					new_breakpoint['filename'] = filename
 					new_breakpoint['line'] = breakpoint.line
-					
+
 					if (breakpoint.cond):
 						new_breakpoint['type'] = self.BREAKPOINT_TYPE_CONDITIONAL
 						new_breakpoint['condition'] = breakpoint.cond
@@ -504,7 +504,7 @@ class PdbIDE(bdb.Bdb):
 		if (not os.path.exists(filename)):
 			self.print_message('Error: File "%s" does not exist!' % (filename))
 			return
-		
+
 		new_breakpoints = []
 
 		# First, clear all breakpoints.
@@ -658,7 +658,7 @@ class PdbIDE(bdb.Bdb):
 				regular_breakpoints.remove(breakpoint)
 
 		return (regular_breakpoints, conditional_breakpoints, temporary_breakpoints)
-	
+
 
 	def is_code_line(self, filename, line):
 		"""Returns True if the given line is a code line; False otherwise.
@@ -887,7 +887,7 @@ class VimPdb(PdbIDE):
 		self.normal_command('%dG' % (row))
 		# Move to the right column.
 		self.normal_command('0%dl' % (column))
-	
+
 	def highlight_breakpoints(self, filename, regular_breakpoints, conditional_breakpoints, temporary_breakpoints):
 		"""Highlights the active breakpoints in the given file."""
 		self.clear_breakpoints_highlighting()
@@ -911,7 +911,7 @@ class VimPdb(PdbIDE):
 		"""Clears the highlighting of the current debugged line."""
 
 		self.command(r'highlight link %s NONE' % (self.CURRENT_LINE_GROUP))
-	
+
 
 	def clear_breakpoints_highlighting(self):
 		"""Clears the highlighting for the breakpoints."""
@@ -939,7 +939,7 @@ class VimPdb(PdbIDE):
 		self.open_file(self.current_filename)
 		self.set_cursor_position(self.current_line, 0)
 
-	
+
 
 	#
 	# Queue related methods
@@ -1001,4 +1001,3 @@ class VimPdb(PdbIDE):
 		#for line_range in line_ranges:
 		#	self.command(r'syntax region %s start="\%%%dl$" end="\%%%dl.\+"' %
 		#			(group_name, line_range['start'] - 1, line_range['end']))
-
