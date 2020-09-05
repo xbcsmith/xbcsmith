@@ -31,6 +31,7 @@ license_header = """// SPDX-FileCopyrightText: © {} {} {}
 __author__ = "Brett Smith"
 __email__ = "<xbcsmith@gmail.com>"
 
+
 def add_license(info):
     debug = info.get("debug", os.environ.get("GODOCX_DEBUG", False))
     level = logging.INFO
@@ -190,7 +191,7 @@ def fix_comments(info):
         with open(gf + suffix, "w") as new:
             for ln in lns:
                 if "//" in ln:
-                    if ln[ln.index("//") + 2] != " " and ln[ln.index("//") -1] != ":":
+                    if ln[ln.index("//") + 2] != " " and ln[ln.index("//") - 1] != ":":
                         ln = ln.replace("//", "// ")
                         ln = ln.replace(":// ", "://")
                 new.write(ln)
@@ -209,6 +210,7 @@ class CmdLine(object):
             gox commands are:
                 do          add comments to the go file
                 add         add yaml:"value" to the go file
+                fix         add spaces to comments //x --> // x
                 license     add license to the go file
             """,
         )
@@ -294,7 +296,9 @@ class CmdLine(object):
         parser = argparse.ArgumentParser(description="Read go files and add yaml:<value> if json:<value> exists\n")
         parser.add_argument("--author", dest="author", action="store", default=None, help="name of author")
         parser.add_argument("--email", dest="email", action="store", default=None, help="email of author")
-        parser.add_argument("--license", dest="license", default=None, action="store", help="SPDX Identifier for the License")
+        parser.add_argument(
+            "--license", dest="license", default=None, action="store", help="SPDX Identifier for the License"
+        )
         parser.add_argument(
             "--replace",
             dest="replace",
