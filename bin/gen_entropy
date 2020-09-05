@@ -3,4 +3,3 @@
 sudo apt-get install rng-tools
 
 rngd -r /dev/urandom
-

@@ -128,7 +128,7 @@ endfunction
 
 function! PdbStartDebug(stop_immediately, args)
 	" Start a debugging session for the current buffer.
-	
+
 	python << EOF
 if ((not vim_pdb) or (not vim_pdb.is_debugged())):
 	# Start a new VimPdb debugging thread (so Vim won't get halted).
@@ -153,7 +153,7 @@ endfunction
 function! PdbStartDebugWithArguments()
 	" Start a debugging session for the current buffer, with a list of
 	" arguments given by the user.
-	
+
 	python << EOF
 # Get the arguments from the user.
 command_line = vim.eval('input("Arguments: ")')
@@ -185,7 +185,7 @@ function! PdbStopDebug()
 		" debugging session.
 		call PdbSaveSavedBreakpoints(g:default_breakpoints_filename)
 	endif
-	
+
 	python <<EOF
 if (vim_pdb.is_debugged()):
 	vim_pdb.add_queued_method('stop_debugging')
@@ -589,4 +589,3 @@ let g:default_breakpoints_filename = "bplist.vpb"
 
 
 call PdbInitialize()
-

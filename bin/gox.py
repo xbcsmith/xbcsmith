@@ -23,11 +23,13 @@ def debug_except_hook(type, value, tb):
 docstring = "// {} {} {}\n"
 docfunc = "// {} {} takes {} input and returns {}\n"
 
-license_header = """// Copyright © {} {} {}, {}. All Rights Reserved.
+license_header = """// SPDX-FileCopyrightText: © {} {} {}
 // SPDX-License-Identifier: {}
 
 """
 
+__author__ = "Brett Smith"
+__email__ = "<xbcsmith@gmail.com>"
 
 def add_license(info):
     debug = info.get("debug", os.environ.get("GODOCX_DEBUG", False))
@@ -37,10 +39,9 @@ def add_license(info):
         level = logging.DEBUG
     logging.basicConfig(stream=sys.stderr, level=level, format="%(asctime)s %(name)s:[%(levelname)s] %(message)s")
     year = time.strftime("%Y")
-    author = info.get("author") or "Brett Smith"
-    email = info.get("email") or "<xbcsmith@gmail.com>"
-    location = info.get("location") or ""
-    spdx = info.get("spdx") or "Apache-2.0"
+    author = info.get("author") or __author__
+    email = info.get("email") or __email__
+    license = info.get("license") or "Apache-2.0"
     paths = info.get("paths") or os.listdir()
     suffix = info.get("suffix") or ".new"
     replace = info.get("replace") or False
@@ -58,7 +59,7 @@ def add_license(info):
                 logger.debug("File already has Copyright or License")
                 continue
         with open(gf + suffix, "w") as new:
-            lic = license_header.format(year, author, email, location, spdx)
+            lic = license_header.format(year, author, email, license)
             new.write(lic)
             for ln in lns:
                 new.write(ln)
@@ -168,15 +169,47 @@ def add_comments(info):
                 shutil.move(gf + suffix, gf)
 
 
+def fix_comments(info):
+    debug = info.get("debug", os.environ.get("GODOCX_DEBUG", False))
+    level = logging.INFO
+    if debug:
+        sys.excepthook = debug_except_hook
+        level = logging.DEBUG
+    logging.basicConfig(stream=sys.stderr, level=level, format="%(asctime)s %(name)s:[%(levelname)s] %(message)s")
+    paths = info.get("paths", os.listdir())
+    suffix = info.get("suffix") or ".new"
+    replace = info.get("replace") or False
+    gofiles = [x for x in paths if x.endswith(".go")]
+    for gf in gofiles:
+        lns = []
+        if replace:
+            logger.debug("backing up file %s to %s", gf, gf + ".bak")
+            shutil.copy(gf, gf + ".bak")
+        with open(gf, "r") as fh:
+            lns = fh.readlines()
+        with open(gf + suffix, "w") as new:
+            for ln in lns:
+                if "//" in ln:
+                    if ln[ln.index("//") + 2] != " " and ln[ln.index("//") -1] != ":":
+                        ln = ln.replace("//", "// ")
+                        ln = ln.replace(":// ", "://")
+                new.write(ln)
+            if replace:
+                logger.debug("Replacing file %s with %s", gf, gf + suffix)
+                shutil.move(gf + suffix, gf)
+
+
 class CmdLine(object):
     def __init__(self):
 
         parser = argparse.ArgumentParser(
             description="Go Doc String Tool",
-            usage="""godocx <command> [<args>]
+            usage="""gox <command> [<args>]
 
-            godocx commands are:
-                do    add comments to the go file
+            gox commands are:
+                do          add comments to the go file
+                add         add yaml:"value" to the go file
+                license     add license to the go file
             """,
         )
 
@@ -212,6 +245,27 @@ class CmdLine(object):
         info = vars(args)
         return add_comments(info)
 
+    def fix(self):
+        """
+        Read go files and add doc strings
+        """
+        parser = argparse.ArgumentParser(description="Read go files and fix comment strings\n")
+        parser.add_argument(
+            "--replace",
+            dest="replace",
+            action="store_true",
+            default=False,
+            help="replace files with the new files old files stored as .bak",
+        )
+        parser.add_argument(
+            "--suffix", dest="suffix", action="store", default=".new", help="suffix for the edited files"
+        )
+        parser.add_argument("--debug", dest="debug", action="store_true", default=False, help="Turn debug on")
+        parser.add_argument("paths", nargs="+", action="store", default=None, help="path to the gofiles")
+        args = parser.parse_args(sys.argv[2:])
+        info = vars(args)
+        return fix_comments(info)
+
     def add(self):
         """
         Read go files and add yaml:<value> if json:<value> exists
@@ -240,10 +294,7 @@ class CmdLine(object):
         parser = argparse.ArgumentParser(description="Read go files and add yaml:<value> if json:<value> exists\n")
         parser.add_argument("--author", dest="author", action="store", default=None, help="name of author")
         parser.add_argument("--email", dest="email", action="store", default=None, help="email of author")
-        parser.add_argument(
-            "--location", dest="location", default=None, action="store", help="address or location of author"
-        )
-        parser.add_argument("--spdx", dest="spdx", default=None, action="store", help="SPDX Identifier for the License")
+        parser.add_argument("--license", dest="license", default=None, action="store", help="SPDX Identifier for the License")
         parser.add_argument(
             "--replace",
             dest="replace",

@@ -47,4 +47,3 @@ if has("unix")
     highlight Comment ctermfg=Cyan			cterm=NONE	guifg=LightBlue			gui=NONE
   endif
 endif
-

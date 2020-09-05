@@ -113,4 +113,3 @@ with with a :match command.
 This is probably due to the use of another Python thread within the Vim process.
 I've tried to make it so that the main Vim process doesn't interact directly with the Python thread (only via a common
 command queue). This improved stability, but not entirely.
-

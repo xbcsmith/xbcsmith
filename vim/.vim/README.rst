@@ -20,7 +20,7 @@ Quick Installation
 ------------------
 
 1. Make sure your ``.vimrc`` has::
- 
+
     filetype on            " enables filetype detection
     filetype plugin on     " enables filetype specific plugins
 
@@ -35,7 +35,7 @@ Quick Installation
 
 .. _release: http://www.vim.org/scripts/script.php?script_id=2441
 .. _pathogen: http://www.vim.org/scripts/script.php?script_id=2332
-.. _runtime path: http://vimdoc.sourceforge.net/htmldoc/options.html#'runtimepath' 
+.. _runtime path: http://vimdoc.sourceforge.net/htmldoc/options.html#'runtimepath'
 
 Running from source
 -------------------
@@ -61,7 +61,7 @@ Options
 -------
 
 Set this option to you vimrc file to disable quickfix support::
-    
+
     let g:pyflakes_use_quickfix = 0
 
 The value is set to 1 by default.
@@ -79,4 +79,3 @@ Changelog
 
 Please see http://www.vim.org/scripts/script.php?script_id=2441 for a history of
 all changes.
-

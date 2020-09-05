@@ -110,7 +110,7 @@ Eoplatanista
 Eosqualodon
 Eschrichtioides
 Etruridelphis
-Eubalaena 
+Eubalaena
 Eucetotherium
 Eudelphis
 Eurhinodelphis
@@ -247,7 +247,7 @@ Odobenocetops
 Oedolithax
 Oligodelphis
 Olympicetus
-Orcinus 
+Orcinus
 Orycterocetus
 Otekaikea
 Otradnocetus
@@ -304,7 +304,7 @@ Protodelphinus
 Protoglobicephala
 Protophocaena
 Protororqualus
-Pseudorca     
+Pseudorca
 Pterocetus
 Pterophocaena
 Qaisracetus
@@ -336,7 +336,7 @@ Sitsqwayk
 Smilocamptus
 Sophianacetus
 Squalodelphis
-Squalodon 
+Squalodon
 Squaloziphius
 Stenasodelphis
 Stenella

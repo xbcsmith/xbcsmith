@@ -218,4 +218,3 @@ hi link gitcommitUnmergedArrow gitcommitUnmergedFile
     let g:terminal_color_foreground = s:fg.gui
   endif
 " }
-
