@@ -146,20 +146,25 @@ brew install go rust
 brew install golangci/tap/golangci-lint
 brew upgrade golangci/tap/golangci-lint
 
-go get -u golang.org/x/tools/...
-go get -u golang.org/x/lint/golint
-
-go get -v github.com/go-lintpack/lintpack/...
-go get -v github.com/go-critic/go-critic/...
-cd $(go env GOPATH)/src/github.com/go-critic/go-critic && make gocritic \
-  && mv -v gocritic $GOPATH/bin/
+go get -u -v golang.org/x/tools/...
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v golang.org/x/lint/golint
+go get -u -v github.com/fzipp/gocyclo
+go get -u -v github.com/uudashr/gocognit/cmd/gocognit
+go get -u -v github.com/go-critic/go-critic/cmd/gocritic
+go get -u -v github.com/wadey/gocovmerge
+go get -u -v github.com/axw/gocov/gocov
+go get -u -v github.com/AlekSi/gocov-xml
+go get -u -v github.com/tebeka/go2xunit
+go get -u -v github.com/shuLhan/go-bindata/cmd/go-bindata
+go get -u -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo
+go get -u -v github.com/golang/protobuf/protoc-gen-go
 ```
 
 ## Node
 
 ```bash
 brew install node
-npm install -g markdownlint-cli
 ```
 
 add to bashrc
@@ -167,6 +172,14 @@ add to bashrc
 ```bash
 # Node PATH
 export PATH="$PATH:/Users/bsmith/node_modules/.bin"
+```
+
+## Lint
+
+```bash
+npm install markdownlint-cli
+npm install commitlint
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > /commitlint.config.js
 ```
 
 ## Misc
