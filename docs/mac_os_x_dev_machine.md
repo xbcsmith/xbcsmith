@@ -99,6 +99,12 @@ brew install vim
 
 <https://github.com/macvim-dev/macvim/releases>
 
+## Git
+
+```bash
+brew install git
+```
+
 ## Git Aliases
 
 ```bash
