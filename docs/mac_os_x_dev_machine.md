@@ -116,6 +116,10 @@ git config --global alias.lt "describe --tags"
 git config --global alias.pl "pull --rebase"
 ```
 
+```bash
+git config --global pull.rebase true
+```
+
 ## Python
 
 probably already installed by **vim**
