@@ -105,6 +105,15 @@ brew install vim
 brew install git
 ```
 
+## Git Config
+
+```bash
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+git config --global core.editor vim
+git config --global pull.rebase true
+```
+
 ## Git Aliases
 
 ```bash
@@ -119,11 +128,7 @@ git config --global alias.t "tag --list -n"
 git config --global alias.cb "checkout -b"
 git config --global alias.can "commit --amend --no-edit"
 git config --global alias.lt "describe --tags"
-git config --global alias.pl "pull --rebase"
-```
-
-```bash
-git config --global pull.rebase true
+git config --global alias.pl "pull --rebase --autostash"
 ```
 
 ## Python
