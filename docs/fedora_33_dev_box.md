@@ -292,8 +292,8 @@ EOF
 
 ```bash
 mkdir -p ~/.virtualenvs
-/usr/bin/python3.8 -m venv ~/.virtualenvs/foobar
-source ~/.virtualenvs/foobar/bin/activate
+/usr/bin/python3.8 -m venv ~/.virtualenvs/foo
+source ~/.virtualenvs/foo/bin/activate
 
 pip install --upgrade pip setuptools pbr six setuptools wheel
 pip install --upgrade rfc3987 PyYAML stevedore jsonschema Jinja2  docker
