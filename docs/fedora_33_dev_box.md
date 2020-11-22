@@ -171,7 +171,7 @@ cat > /etc/docker/daemon.json << EOF
 
 EOF
 
-sed -i 's~dockerd -H fd://~dockerd~g' /lib/systemd/system/docker.service
+sed -i 's~--host=fd:\/\/ \\\\n~~g' /lib/systemd/system/docker.service
 
 systemctl daemon-reload
 
