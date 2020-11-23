@@ -114,6 +114,8 @@ sudo dnf install -y \
 
 ### Create a partition (optional)
 
+As **root** is easier than using sudo in this case
+
 ```bash
 lsblk
 df -Th
@@ -126,6 +128,8 @@ mkdir /var/lib/docker
 mkfs.ext4 -L docker /dev/mapper/fedora-docker
 echo "/dev/mapper/fedora-docker /var/lib/docker       ext4    defaults        0 0" >> /etc/fstab
 mount /var/lib/docker/
+semanage fcontext -a -e /var/lib/containers /var/lib/docker
+restorecon -R -v /var/lib/docker
 ```
 
 ### Temporary workaround CgroupsV2
