@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+
 VERSION="${1:-4.0.6}"
 ORG="lensapp"
 PROJECT="lens"
@@ -9,7 +9,7 @@ BINARY="https://github.com/${ORG}/${PROJECT}/releases/download/v${VERSION}/${APP
 
 echo "updating ${APPNAME} to ${VERSION} ${BINARY}"
 
-wget -O ${APPNAME}-${VERSION}-${ARCH}.AppImage --show-progress --progress=bar:force:noscroll ${BINARY}
-chmod +x ${APPNAME}-${VERSION}-${ARCH}.AppImage
+wget -O ${APPNAME}-${VERSION}.AppImage --show-progress --progress=bar:force:noscroll ${BINARY}
+chmod +x ${APPNAME}-${VERSION}.AppImage
 sed -e "s/@VERSION@/${VERSION}/g" ${APPNAME,,}.desktop.tmpl > ${APPNAME,,}.desktop
 cp -v ${APPNAME,,}.desktop ~/.local/share/applications/${APPNAME,,}.desktop
