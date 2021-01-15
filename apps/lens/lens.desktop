@@ -1,12 +1,12 @@
 [Desktop Entry]
 Name=Lens
 Comment=Lens - The Kubernetes IDE
-Exec=/home/bsmith/apps/lens/Lens-4.0.3.AppImage %U
+Exec=/home/bsmith/apps/lens/Lens-4.0.6.AppImage %U
 Terminal=false
 Type=Application
 Icon=/home/bsmith/apps/lens/lens.png
 StartupWMClass=Lens
-X-AppImage-Version=4.0.3
+X-AppImage-Version=4.0.6
 Categories=Utilities;
 X-AppImage-Comment=Lens
-TryExec=/home/bsmith/apps/lens/Lens-4.0.3.AppImage
+TryExec=/home/bsmith/apps/lens/Lens-4.0.6.AppImage
