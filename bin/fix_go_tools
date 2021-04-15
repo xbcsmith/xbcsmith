@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
-go get -u -v github.com/go-delve/delve/cmd/dlv
-go get -u -v github.com/oklog/ulid/v2/cmd/ulid
-
 go get -u -v github.com/AlekSi/gocov-xml
 go get -u -v github.com/axw/gocov/gocov
 go get -u -v github.com/fzipp/gocyclo
 go get -u -v github.com/go-bindata/go-bindata/...
 go get -u -v github.com/go-critic/go-critic/cmd/gocritic
-
+go get -u -v github.com/go-delve/delve/cmd/dlv
 go get -u -v github.com/golangci/golangci-lint/cmd/golangci-lint
 go get -u -v github.com/golang/protobuf/protoc-gen-go
 go get -u -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo
-
+go get -u -v github.com/oklog/ulid/v2/cmd/ulid
 go get -u -v github.com/tebeka/go2xunit
 go get -u -v github.com/uudashr/gocognit/cmd/gocognit
 go get -u -v github.com/wadey/gocovmerge

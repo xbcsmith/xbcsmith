@@ -93,8 +93,8 @@ EOF
 chmod +x bin/stopvnc
 ```
 
-Make sure firewall is allowing connections.
-(Google opening ports in firewall if you need to fix it)
+Make sure firewall is allowing connections. (Google opening ports in firewall if
+you need to fix it)
 
 ```bash
 sudo iptables -L
