@@ -349,6 +349,22 @@ sudo sh -c 'echo -e "[Atom]\nname=Atom Editor\nbaseurl=https://packagecloud.io/A
 sudo dnf install atom
 ```
 
+## ImageMagick with heic
+
+```bash
+sudo dnf remove ImageMagick
+sudo dnf install libheif libheif-devel libjpeg libjpeg-devel
+cd /tmp
+git clone https://github.com/ImageMagick/ImageMagick.git
+cd ./ImageMagick
+./configure --with-heic --with-jpeg
+make -j4
+make install
+sudo make install
+sudo ldconfig
+cd ..
+rm -rf ImageMagick
+```
 
 ## Remove Packagekit (optional)
 
