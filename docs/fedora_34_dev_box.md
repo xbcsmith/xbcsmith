@@ -186,7 +186,6 @@ Add to the bottom of your .bashrc
 export PYTHONSTARTUP=~/.pythonrc
 
 source ~/.git-completion.bash
-source ~/.screen-completion.bash
 
 # GRADLE
 export GRADLE_USER_HOME=~/.gradle
