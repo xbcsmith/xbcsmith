@@ -406,5 +406,3 @@ systemctl enable --now vncserver@:1 vncserver@:2
 ```
 
 Login using \<hostname\>:5901
-
-P0l4r!s
