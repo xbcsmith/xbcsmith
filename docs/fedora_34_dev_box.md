@@ -369,7 +369,7 @@ vi ~/.vnc/config
 
 session=gnome
 securitytypes=vncauth,tlsvnc
-geometry==1600x1200
+geometry=1600x1200
 ```
 
 Configure settings with root privilege ans start Systemd Unit.
