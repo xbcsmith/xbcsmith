@@ -96,12 +96,17 @@ source ~/.git-completion.bash
 export CLICOLOR=1
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # PYTHON Vars
 export PYTHONSTARTUP=~/.pythonrc
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.7
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.9
 export PATH=$PATH:/usr/local/bin
 #export VIRTUALENVWRAPPER_PYTHON=~/.pyenv/shims/python
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.9
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
@@ -128,8 +133,12 @@ fi
 #export PATH="/Users/bsmith/.pyenv:$PATH"
 #eval "$(pyenv init -)"
 
-
+# GNU Paths
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
 
 # GO VARIABLES
 export GO111MODULE=on
@@ -137,3 +146,5 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT:$GOPATH/bin
 
 source <(kubectl completion bash)
+
+export PATH="/usr/local/bin:$PATH"
