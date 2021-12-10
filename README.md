@@ -22,6 +22,7 @@ repo lists and things
 - [Fedora 32 Dev Box](docs/fedora_32_dev_box.md)
 - [Fedora 33 Dev Box](docs/fedora_33_dev_box.md)
 - [Fedora 34 Dev Box](docs/fedora_34_dev_box.md)
+- [Fedora 35 Dev Box](docs/fedora_35_dev_box.md)
 - [List Of Extinct Cetaceans](docs/list_of_extinct_cetaceans.txt)
 - [5.0 Kernel Centos7](docs/5.0_kernel_CentOS7.md)
 - [4.0 Kernel Centos7](docs/4.0_kernel_CentOS7.md)
