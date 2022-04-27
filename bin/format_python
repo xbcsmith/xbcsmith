@@ -1,5 +1,5 @@
 #!/bin/bash
+isort --atomic ""
+black --line-length=120 ""
+flake8 --max-line-length=120 ""
 
-isort --atomic --force-adds "${@}"
-black --line-length=120 "${@}"
-flake8 --max-line-length=120 "${@}"
