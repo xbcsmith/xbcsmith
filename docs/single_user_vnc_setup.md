@@ -103,16 +103,16 @@ sudo iptables -L
 ## Start VNC
 
 ```bash
-ssh bsmith@xbcsmith.foo.com
+ssh $USER@xbcsmith.foo.com
 
 startvnc
 ```
 
 ```bash
-New 'bsmith@xbcsmith.foo.com:5901 (bsmith)' desktop is bsmith@xbcsmith.foo.com:5901
+New '$USER@xbcsmith.foo.com:5901 ($USER)' desktop is $USER@xbcsmith.foo.com:5901
 
-Starting applications specified in /home/bsmith/.vnc/xstartup
-Log file is /home/bsmith/.vnc/bsmith@xbcsmith.foo.com:5901.log
+Starting applications specified in /home/$USER/.vnc/xstartup
+Log file is /home/$USER/.vnc/$USER@xbcsmith.foo.com:5901.log
 ```
 
 ## From another machine connect

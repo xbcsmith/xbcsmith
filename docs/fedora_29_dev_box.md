@@ -162,7 +162,7 @@ export JAVA_BIN=$(readlink -f $(which java))
 export JAVA_HOME=${JAVA_BIN%%/bin/java}
 
 # GO VARIABLES
-export GOPATH=/home/bsmith/go
+export GOPATH=/home/$USER/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```

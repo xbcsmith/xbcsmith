@@ -1,7 +1,7 @@
 # Argo MicroK8s
 
 ```bash
-sudo usermod -aG wheel,docker bsmith
+sudo usermod -aG wheel,docker $USER
 
 sudo iptables -P FORWARD ACCEPT
 

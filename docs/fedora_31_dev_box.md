@@ -216,14 +216,14 @@ export PATH=$PATH:$GOBIN
 export PATH=$PATH:/usr/local/bin/go/bin
 
 # RUST
-export CARGOBIN=/home/bsmith/.cargo/bin
+export CARGOBIN=/home/$USER/.cargo/bin
 export PATH=$PATH:$CARGOBIN
 
 # SNAPD
-export PATH=$PATH:/home/bsmith/snap/bin
+export PATH=$PATH:/home/$USER/snap/bin
 
 # NPM
-export PATH=$PATH:/home/bsmith/node_modules/.bin
+export PATH=$PATH:/home/$USER/node_modules/.bin
 ```
 
 ## pythonrc
