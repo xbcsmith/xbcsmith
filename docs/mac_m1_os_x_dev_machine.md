@@ -40,6 +40,8 @@ defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/${USER}/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
 ## Bash 5
@@ -47,9 +49,9 @@ defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
 ```bash
 brew install bash bash-completion
 which -a bash
-/usr/local/bin/bash --version
+/opt/homebrew/bin/bash --version
 sudo vim /etc/shells
-chsh -s /usr/local/bin/bash
+chsh -s /opt/homebrew/bin/bash
 ```
 
 Add the following to `~/.bashrc`
@@ -59,15 +61,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 ```
 
-```bash
-curl -fsSL -o "/Users/$USER/.git-completion.bash" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
-```
-
 ## Core Utils
 
 ```bash
-brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent \
-  gnu-getopt grep gnutls
+brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep gnutls
 ```
 
 ```bash
@@ -151,15 +148,15 @@ brew install python3
 ```
 
 ```bash
-pip3 install virtualenv virtualenvwrapper pyenv
+brew install virtualenv virtualenvwrapper pyenv
 
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+source /opt/homebrew/bin/virtualenvwrapper_lazy.sh
 mkvirtualenv --python $(which python3) foo
 
 pip3 install --upgrade pip setuptools pbr wheel
 pip3 install --upgrade rfc3987 enum34 PyYAML stevedore jsonschema Jinja2
 pip3 install --upgrade flake8 tox pdbpp isort black mock tox
-pip3 install --upgrade docker reuse
+pip3 install --upgrade docker reuse pre-commit yamllint
 ```
 
 ## Go and Rust
@@ -202,8 +199,10 @@ export PATH="$PATH:/Users/$USER/node_modules/.bin"
 
 ```bash
 npm install markdownlint-cli
-npm install commitlint
-echo "module.exports = {extends: ['@commitlint/config-conventional']}" > /commitlint.config.js
+npm install remark-cli remark-preset-lint-recommended
+npm install prettier
+npm install @commitlint/cli @commitlint/config-conventional
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > ~/commitlint.config.js
 ```
 
 ## Misc
@@ -214,4 +213,9 @@ brew cask install macdown vscodium
 brew install tree xz yamllint wget
 
 brew install pwgen kafkacat jq gnutls
+
+brew install tiger-vnc
+
+brew install gimp inkscape
+
 ```

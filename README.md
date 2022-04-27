@@ -16,6 +16,7 @@ repo lists and things
 
 ## doc
 
+- [Mac M1 Os X Dev Machine](docs/mac_m1_os_x_dev_machine.md)
 - [Mac Os X Dev Machine](docs/mac_os_x_dev_machine.md)
 - [Fedora 29 Dev Box](docs/fedora_29_dev_box.md)
 - [Fedora 31 Dev Box](docs/fedora_31_dev_box.md)

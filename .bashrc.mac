@@ -2,10 +2,6 @@
 # User specific aliases and functions
 set -b
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-fi
 
 BLACK='1;30m'
 RED='1;31m'
@@ -16,52 +12,34 @@ MAGENTA='1;35m'
 CYAN='1;36m'
 WHITE='1;37m'
 
-BLACKBLACK='0;90m'
-REDRED='0;91m'
-GREENGREEN='0;92m'
-YELLOWYELLOW='0;93m'
-BLUEBLUE='0;94m'
-PURPLEPURPLE='0;95m'
-CYANCYAN='0;96m'
-WHITEWHITE='0;97m'
-
 
 NCOLOR=$GREEN
 HCOLOR=$YELLOW
 ACOLOR=$GREEN
-PCOLOR=$WHITE
 
-if [ -f /etc/os-release ];then
-    DIST=$(head -n1 /etc/os-release | cut -d"=" -f2 | tr -d '"' | cut -d" " -f1)
-else
-    DIST=$(head -n1 /etc/issue | cut -d" " -f1)
-fi
+
+DIST=$(head -n1 /etc/issue | cut -d" " -f1)
 
 case ${DIST} in
     Fedora )    NCOLOR=$GREEN
                 HCOLOR=$WHITE
                 ACOLOR=$WHITE
-                PCOLOR=$WHITE
                 ;;
     CentOS )    NCOLOR=$GREEN
                 HCOLOR=$BLUE
                 ACOLOR=$BLUE
-                PCOLOR=$WHITE
                 ;;
     Red )       NCOLOR=$GREEN
                 HCOLOR=$CYAN
                 ACOLOR=$CYAN
-                PCOLOR=$WHITE
                 ;;
     Scientific )       NCOLOR=$GREEN
                 HCOLOR=$YELLOW
                 ACOLOR=$YELLOW
-                PCOLOR=$WHITE
                 ;;
     * )         NCOLOR=$GREEN
                 HCOLOR=$WHITE
                 ACOLOR=$WHITE
-                PCOLOR=$RED
                 ;;
 esac
 
@@ -70,46 +48,33 @@ if [ $UID -eq 0 ];
         NCOLOR=$RED
         HCOLOR=$RED
         ACOLOR=$RED
-        PCOLOR=$RED
 fi
 
-
-
-PS1="\[\033[1;37m\][\[\033[1;37m\]\[\033[${NCOLOR}\]\u\[\033[1;37m\]@\[\033[1;37m\]\[\033[${HCOLOR}\]\h\[\033[1;35m\]\[\033[1;37m\]:\[\033[1;37m\]\[\033[${PCOLOR}\]\w\[\033[${PCOLOR}\]\[\033[1;37m\]]---\[\033[1;37m\]\n\[\033[1;37m\]-(\[\033[00m\]\W\[\033[1;37m\])-\[\033[1;37m\]\[\033[${ACOLOR}\]>>>\[\033[00m\]"
+PS1="\[\033[1;37m\][\[\033[1;37m\]\[\033[${NCOLOR}\]\u\[\033[1;37m\]@\[\033[1;37m\]\[\033[${HCOLOR}\]\h\[\033[1;35m\]\[\033[1;37m\]]----(\[\033[1;37m\]\[\033[1;31m\]\w\[\033[1;31m\]\[\033[1;37m\])---\[\033[1;37m\]\n\[\033[1;37m\]-(\[\033[00m\]\W\[\033[1;37m\])-\[\033[1;37m\]\[\033[${ACOLOR}\]>>>\[\033[00m\]"
 
 # User specific aliases and functions
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias vi=$(which vim)
+alias vi='vim'
 alias whence='which '
 alias more='/usr/bin/less '
 
-if [ -f /usr/local/etc/bash_completion ]; then
-    source /usr/local/etc/bash_completion
+if [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]];then
+   source "/opt/homebrew/etc/profile.d/bash_completion.sh"
 fi
-
-# GIT
-source ~/.git-completion.bash
-
-# ENABLE COLORS ON MAC
-export CLICOLOR=1
-export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
 
 # PYTHON Vars
 export PYTHONSTARTUP=~/.pythonrc
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.9
-export PATH=$PATH:/usr/local/bin
-#export VIRTUALENVWRAPPER_PYTHON=~/.pyenv/shims/python
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.9
+export PYTHONPATH=/usr/local/lib/python3.7
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
+eval "$(pyenv init -)"
+if [ -f /opt/homebrew/bin/virtualenvwrapper.sh ]; then
+     source /opt/homebrew/bin/virtualenvwrapper.sh
+fi
+
 
 # cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
@@ -122,29 +87,31 @@ syspip3(){
    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
 }
 
-#if which pyenv-virtualenv-init > /dev/null; then
-#    eval "$(pyenv virtualenv-init -)";
-#fi
+# GIT
+source ~/.git-completion.bash
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+# ENABLE COLORS ON MAC
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
-#export PATH="/Users/bsmith/.pyenv:$PATH"
-#eval "$(pyenv init -)"
+# BREW
 
-# GNU Paths
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
-# GO VARIABLES
-export GO111MODULE=on
-export GOPATH=$HOME/go
+# GO VARS for Mac
+export GOPATH=/Users/bsmith/go
 export PATH=$PATH:$GOROOT:$GOPATH/bin
 
-source <(kubectl completion bash)
+# GNU Paths
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
 
-export PATH="/usr/local/bin:$PATH"
+# Node PATH
+export PATH="$PATH:/Users/bsmith/node_modules/.bin"
+
+# HOME BIN
+export PATH="$PATH:/Users/bsmith/bin"
+
