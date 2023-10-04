@@ -20,6 +20,12 @@ App Store
 
 <https://rancherdesktop.io/>
 
+To use x86_64 images on the M1 export the following:
+
+```bash
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+```
+
 ## Insync
 
 <https://www.insynchq.com/downloads>
