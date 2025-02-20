@@ -132,6 +132,15 @@ gate releases by readiness, drive automated testing, make their pipelines
 asynchronous, and use machine learning to make the pipeline leaner and more
 reliable.
 
+Attendee Takeaways
+
+Answers for the following questions:
+- Why go event driven?
+- How do we gate releases by readiness?
+- How do we drive automated testing?
+- How do we make our pipelines asynchronous?
+- How do we use machine learning to make the pipeline leaner and more reliable?
+
 ### Continuous Talent Development
 
 A presentation on building and growing talent – whether it is interns, recent
@@ -158,11 +167,120 @@ everywhere in the pipeline. The talk should lead to a greater discussion around
 the challenges of securing the supply chain, supporting EO 14028 and ISO27001,
 and improving the security posture of your pipelines.
 
-We can shift left and do things earlier in the software lifecycle. We can build
-event driven robots to enforce compliance, scan environments, verify binaries,
-and remove out-of-band human checks. However, compliance does not equal
-security. Closing the attack vectors should be priority #1. And while monitoring
-is necessary verification is more important. The verification of environments,
-materials, processes, and artifacts before running actions in our pipelines
-increase security. In this sense verification is greater than monitoring
 
+Attendee Takeaways
+
+Answers for the following questions:
+
+- Why do we need supply chain automation?
+- What are common attack vectors in a supply chain?
+- What techniques can we use to help secure the supply chain?
+- What are the security benefits of supply chain automation and shift left?
+- What specifications and tools can we use to help secure the supply chain?
+
+### Reproducible Builds: Robots recreate Electric Sheep
+
+A talk about the security benefits and challenges of reproducible builds. It includes a real world comparison of the Debian and Fedora build systems and a discussion on the value based on the effort. Listeners should come away with knowledge of what reproducible builds are and opinions on if they are worth the effort.
+
+Attendee Takeaways
+
+Answers for the following questions:
+- What is a reproducible build?
+- Why do we need reproducible builds?
+- What are the security benefits of reproducible builds?
+- What are the security challenges of reproducible builds?
+- What is the value of reproducible builds?
+
+30 minutes plus QA discussion. First presented at the NCSU Secure Software Supply Chain Community Day.
+Presented at DevOps Con 2024 San Diego. 
+
+### Secure the AI: Protect the Electric Sheep
+
+In this session I go over how AI presents security risks to the Software Supply Chain, SDLC, developers, and architects. I cover attack vectors in the supply chain and how they relate to the the OWASP Top 10 for LLMs as well as how they tie into scenarios in your CI/CD pipelines. We wrap up the session covering techniques to close the attack vectors and protect your pipelines, software, and customers.
+
+Attendee Takeaways
+
+Answers for the following questions:
+- Why do we need to secure the AI?
+- How do we secure the AI?
+- What is the OWASP Top 10 for LLMs?
+- What are the AI attack vectors in the supply chain?
+- How do we close the AI attack vectors?
+
+### Wrangling Third Party Dependencies: Are the Electric Sheep Healthy?
+
+A talk about how we are working on curating our Third Party Dependencies using automation and online resources like Ecosyste.ms, deps.dev, OpenSSF Scorecard as well as Snyk, Sonatype, and others. What libraries are we using? What libraries are unsupported, abandoned, outdated, etc...? What open source tools can we leverage to help answer these questions and more?
+
+Attendee Takeaways
+
+Answers for the following questions:
+- Why do we need to curate Third Party Dependencies?
+- How to find libraries are we using?
+- What libraries are unsupported, abandoned, outdated, etc...?
+- What open source tools can we leverage to help answer these questions and more?
+
+### Wrangling Third Party Dependencies: Electric Sheep and JFrog
+
+A talk about how we are working on curating our Third Party Dependencies using automation and JFrog products like Artifactory, Curation, Xray, and Advanced Security. What libraries are we using? What libraries are unsupported, abandoned, outdated, etc...? What open source tools can we leverage to help answer these questions and more?
+
+Attendee Takeaways
+
+Answers for the following questions:
+- Why do we need to curate Third Party Dependencies?
+- How to find libraries are we using?
+- What libraries are unsupported, abandoned, outdated, etc...?
+- What open source tools can we leverage to help answer these questions and more?
+- What JFrog products can we leverage to help answer these questions?
+
+
+### The workshop is how long? Using AI to create an all day workshop
+
+In this session I tell the story of how AI saved me from a disaster. I agreed to do a workshop I was working on for a conference. I only had about 45 minutes worth of content but planned to have 90 minutes. I then found out after agreeing to do the workshop that the format 4 90 minute sessions (all day). I will talk about how I used AI to fill in content and tech tricks I used to pull it off from writing workshop content and generating slides to writing software to use in the workshop (Go and Python).
+
+### Platform Engineering: Herding the Electric Sheep
+
+A talk about platform engineering, DevOps, DevSecOps, sprawl, chaos, compliance, and security. Why engineer an Internal Developer Platform when I have DevOps? DevOps works fine when you are a 20 person start-up but it often doesn't scale to Enterprise level development efforts. When you have 3000 developers with different needs and you are responsible for EO compliance and security a modular self-service platform is a good choice to build. In this talk I cover the challenges we have faced in a 3000 developers enterprise and how we are working to address them. I also cover how we are working on automating, integration, and scaling the creation of our internal developer platform. We talk about the tools we are using and the good and bad decisions I have made along the way. I also talk about how we are leveraging SBOMs, SLSA, and other tools to help build out a secure and compliant platform.
+
+Attendee Takeaways
+
+Answers for the following questions:
+- Do we need a Platform Engineering Team?
+- Is an IDP the right solution for my situation?
+- What does a large scale IDP look like?
+- What does it take to support a large scale IDP?
+- What does security and compliance look like in an IDP?
+
+Attendees will learn the benefits and challenges of Platform Engineering
+
+### Platform Engineering: Herding the Electric Sheep  and some Frogs
+
+A talk about platform engineering, DevOps, DevSecOps, sprawl, chaos, bad decisions, compliance, and security. Why engineer an Internal Developer Platform when I have DevOps? DevOps works fine when you are a 20 person start-up but it often doesn't scale to Enterprise level development efforts. When you have 3000 developers with different needs and you are responsible for EO compliance and security a modular self-service platform is a good choice to build. In this talk I cover the challenges we have faced in a 3000 developers enterprise and how we are working to address them. I also cover how we are working on automating, integration, and scaling the creation of our internal developer platform. We talk about the tools we are using including JFrog products like Artifactory, Curation, Xray, and Advanced Security. I also talk about how we are leveraging SBOMs, SLSA, and other tools to help build out a secure and compliant platform.
+
+Attendee Takeaways
+
+Answers for the following questions:
+- Do we need a Platform Engineering Team?
+- Is an IDP the right solution for my situation?
+- What does a large scale IDP look like?
+- What does it take to support a large scale IDP?
+- What does security and compliance look like in an IDP?
+- What JFrog products can we leverage to help answer these questions?
+
+Attendees will learn the benefits and challenges of Platform Engineering and how JFrog can help.
+
+
+## Workshops
+
+### Workshop: Building an Event-Driven CI/CD Provenance System
+
+In this hands-on workshop participants will journey through the architecture of an Event-Driven CI/CD Provenance System. We will not only cover microservice architectures, but also asynchronous communication, data interoperability, message specifications, and schema validation.
+
+We will learn how to leverage Golang for service and CLI development, Docker for seamless deployment, Redpanda as a Kafka-compatible message bus, and PostgreSQL for efficient backend storage. The workshop uses the open-source project Event Provenance Registry (EPR) as the central service to leverage these technologies.
+
+Over the course of the session we will delve into the EPR codebase, work through coding and building Golang services, discuss the theories of event driven systems, cover some pitfalls, and examine the integration with Redpanda for effective event propagation.
+
+The workshop provides a valuable blend of theoretical understanding and hands-on experience in the dynamic landscape of Event-Driven CI/CD architectures.
+
+4 90 minute sessions for the full workshop. The workshop can be modified to fit a smaller time slot.
+
+First public delivery at DevOpsCon San Diego 2024
